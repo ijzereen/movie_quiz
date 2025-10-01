@@ -1,0 +1,481 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+    background: #ffffff;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    color: #1a1a1a;
+    line-height: 1.6;
+}
+
+.container {
+    background: #ffffff;
+    border: 1px solid #e5e5e5;
+    border-radius: 16px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    padding: 40px;
+    max-width: 640px;
+    width: 100%;
+    text-align: center;
+    position: relative;
+}
+
+h1 {
+    color: #1a1a1a;
+    margin-bottom: 32px;
+    font-size: 2.25rem;
+    font-weight: 700;
+    letter-spacing: -0.025em;
+}
+
+.screen {
+    margin: 24px 0;
+}
+
+.hidden {
+    display: none;
+}
+
+/* 사용자 정보 입력 화면 */
+.user-info-form {
+    max-width: 400px;
+    margin: 0 auto;
+    text-align: left;
+}
+
+#user-info-screen h2 {
+    color: #1f2937;
+    margin-bottom: 16px;
+    font-size: 1.5rem;
+    font-weight: 600;
+    text-align: center;
+}
+
+#user-info-screen p {
+    color: #6b7280;
+    font-size: 0.875rem;
+    margin-bottom: 32px;
+    text-align: center;
+    line-height: 1.6;
+}
+
+.input-group {
+    margin-bottom: 24px;
+}
+
+.input-group label {
+    display: block;
+    margin-bottom: 8px;
+    color: #374151;
+    font-weight: 500;
+    font-size: 0.875rem;
+}
+
+.input-field {
+    width: 100%;
+    padding: 12px 16px;
+    border: 1px solid #d1d5db;
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: all 0.2s ease;
+    background: #ffffff;
+}
+
+.input-field:focus {
+    outline: none;
+    border-color: #3b82f6;
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+.input-field:invalid {
+    border-color: #ef4444;
+}
+
+/* 시작 화면 */
+.quiz-instructions {
+    max-width: 520px;
+    margin: 0 auto;
+    text-align: left;
+}
+
+.quiz-instructions h2 {
+    color: #1f2937;
+    margin-bottom: 24px;
+    font-size: 1.5rem;
+    font-weight: 600;
+    text-align: center;
+}
+
+.quiz-instructions ul {
+    background: #f9fafb;
+    padding: 24px;
+    border-radius: 12px;
+    margin-bottom: 32px;
+    border: 1px solid #e5e7eb;
+}
+
+.quiz-instructions li {
+    color: #4b5563;
+    margin-bottom: 12px;
+    line-height: 1.6;
+    list-style-type: none;
+    position: relative;
+    padding-left: 24px;
+}
+
+.quiz-instructions li::before {
+    content: "•";
+    position: absolute;
+    left: 0;
+    color: #3b82f6;
+    font-weight: bold;
+    font-size: 1.2em;
+}
+
+.quiz-description {
+    color: #6b7280;
+    font-size: 1rem;
+    margin-bottom: 32px;
+    text-align: center;
+}
+
+.start-game-btn {
+    background: #1f2937;
+    color: #ffffff;
+    font-size: 1.125rem;
+    font-weight: 500;
+    padding: 16px 32px;
+    min-width: 200px;
+    border-radius: 8px;
+    border: none;
+    transition: all 0.2s ease;
+}
+
+.start-game-btn:hover {
+    background: #111827;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(31, 41, 55, 0.15);
+}
+
+/* 버튼 스타일 */
+.btn {
+    background: #1f2937;
+    color: #ffffff;
+    border: none;
+    padding: 14px 28px;
+    border-radius: 8px;
+    font-size: 0.875rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    margin: 8px;
+    min-width: 140px;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.btn:hover {
+    background: #111827;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(31, 41, 55, 0.15);
+}
+
+.btn.secondary {
+    background: #6b7280;
+}
+
+.btn.secondary:hover {
+    background: #4b5563;
+    box-shadow: 0 4px 12px rgba(107, 114, 128, 0.15);
+}
+
+.save-btn {
+    background: #059669;
+}
+
+.save-btn:hover {
+    background: #047857;
+    box-shadow: 0 4px 12px rgba(5, 150, 105, 0.15);
+}
+
+/* 퀴즈 화면 */
+.timer {
+    margin-bottom: 32px;
+}
+
+.timer-bar {
+    width: 100%;
+    height: 6px;
+    background: #f3f4f6;
+    border-radius: 3px;
+    overflow: hidden;
+    margin-bottom: 12px;
+}
+
+.timer-progress {
+    height: 100%;
+    background: #ef4444;
+    border-radius: 3px;
+    transition: width 0.1s linear;
+    width: 100%;
+}
+
+.timer-text {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: #6b7280;
+    text-align: right;
+}
+
+.movie-poster {
+    width: 180px;
+    height: 270px;
+    object-fit: cover;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    margin-bottom: 24px;
+}
+
+.movie-title {
+    color: #1f2937;
+    margin-bottom: 32px;
+    font-size: 1.5rem;
+    font-weight: 600;
+    line-height: 1.4;
+}
+
+.reviews {
+    text-align: left;
+    margin-bottom: 32px;
+}
+
+.reviews h3 {
+    color: #1f2937;
+    margin-bottom: 16px;
+    font-size: 1.125rem;
+    font-weight: 600;
+}
+
+.review-item {
+    background: #f9fafb;
+    padding: 16px;
+    margin-bottom: 12px;
+    border-radius: 8px;
+    border: 1px solid #e5e7eb;
+    border-left: 3px solid #3b82f6;
+}
+
+.review-author {
+    font-weight: 600;
+    color: #3b82f6;
+    margin-bottom: 4px;
+    font-size: 0.875rem;
+}
+
+.review-text {
+    color: #4b5563;
+    line-height: 1.5;
+    font-size: 0.875rem;
+}
+
+.rating-input {
+    text-align: left;
+}
+
+.rating-input h3 {
+    color: #1f2937;
+    margin-bottom: 16px;
+    font-size: 1.125rem;
+    font-weight: 600;
+}
+
+.rating-container {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 24px;
+}
+
+.rating-input-field {
+    padding: 12px 16px;
+    border: 1px solid #d1d5db;
+    border-radius: 8px;
+    font-size: 1rem;
+    width: 100px;
+    text-align: center;
+    transition: all 0.2s ease;
+}
+
+.rating-input-field:focus {
+    outline: none;
+    border-color: #3b82f6;
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+.rating-unit {
+    color: #6b7280;
+    font-size: 0.875rem;
+}
+
+/* 결과 화면 */
+.result-content {
+    padding: 24px 0;
+}
+
+#result-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: 16px;
+    color: #1f2937;
+}
+
+#result-message {
+    font-size: 0.875rem;
+    margin-bottom: 24px;
+    color: #4b5563;
+    line-height: 1.6;
+}
+
+.score {
+    background: #f9fafb;
+    padding: 20px;
+    border-radius: 12px;
+    margin-bottom: 24px;
+    border: 1px solid #e5e7eb;
+}
+
+.score p {
+    margin: 8px 0;
+    font-size: 0.875rem;
+    color: #374151;
+    font-weight: 500;
+}
+
+.score span {
+    font-weight: 600;
+    color: #3b82f6;
+}
+
+.result-actions {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 24px;
+}
+
+/* 반응형 디자인 */
+@media (max-width: 768px) {
+    .container {
+        padding: 20px;
+        margin: 10px;
+        max-width: 90vw;
+    }
+
+    h1 {
+        font-size: 2em;
+    }
+
+    h2 {
+        font-size: 1.8em;
+    }
+
+    .movie-poster {
+        width: 150px;
+        height: 225px;
+    }
+
+    .movie-title {
+        font-size: 1.5em;
+    }
+
+    .btn {
+        padding: 12px 25px;
+        font-size: 1em;
+        min-width: 120px;
+    }
+
+    .user-info-form {
+        max-width: 100%;
+    }
+
+    .input-field {
+        font-size: 16px; /* 모바일에서 확대 방지 */
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        padding: 15px;
+        margin: 5px;
+    }
+
+    h1 {
+        font-size: 1.8em;
+    }
+
+    h2 {
+        font-size: 1.5em;
+    }
+
+    .rating-container {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .rating-input-field {
+        width: 100%;
+    }
+
+    .movie-poster {
+        width: 120px;
+        height: 180px;
+    }
+
+    .movie-title {
+        font-size: 1.3em;
+    }
+
+    .btn {
+        padding: 10px 20px;
+        font-size: 0.9em;
+        min-width: 100px;
+    }
+
+    .input-field {
+        padding: 10px 12px;
+        font-size: 16px;
+    }
+
+    .review-item {
+        padding: 12px;
+    }
+
+    .score {
+        padding: 15px;
+    }
+}
+
+@media (max-width: 320px) {
+    .movie-poster {
+        width: 100px;
+        height: 150px;
+    }
+
+    .movie-title {
+        font-size: 1.2em;
+    }
+
+    .btn {
+        padding: 8px 15px;
+        font-size: 0.8em;
+    }
+}

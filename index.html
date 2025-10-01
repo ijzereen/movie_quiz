@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>영화 평점 퀴즈</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>🎬 영화 평점 퀴즈</h1>
+
+        <!-- 사용자 정보 입력 화면 -->
+        <div id="user-info-screen" class="screen">
+            <h2>사용자 정보 입력</h2>
+            <p>퀴즈 결과를 저장하고 다른 사용자들과 비교하기 위해<br>정보를 입력해주세요.</p>
+            <div class="user-info-form">
+                <div class="input-group">
+                    <label for="user-name">이름:</label>
+                    <input type="text" id="user-name" class="input-field" placeholder="이름을 입력하세요" required>
+                </div>
+                <div class="input-group">
+                    <label for="user-dorm">생활관 번호:</label>
+                    <input type="text" id="user-dorm" class="input-field" placeholder="생활관 번호를 입력하세요" required>
+                </div>
+                <button id="user-info-start-btn" class="btn">퀴즈 시작하기</button>
+            </div>
+        </div>
+
+        <!-- 시작 화면 -->
+        <div id="start-screen" class="screen hidden">
+            <div class="quiz-instructions">
+                <h2>🎯 퀴즈 주의사항</h2>
+                <ul>
+                    <li>영화 포스터와 관람객 리뷰를 보고 평점을 예측해보세요</li>
+                    <li>평점은 0.0부터 5.0점 사이로 입력 가능합니다</li>
+                    <li>실제 평점과 0.2점 이내 차이는 정답으로 인정됩니다</li>
+                    <li>제한 시간 15초 내에 답변을 완료해주세요</li>
+                    <li>총 누적 오차가 적을수록 좋은 성적입니다</li>
+                </ul>
+                <p class="quiz-description">영화 포스터와 리뷰를 보고 평점을 맞춰보세요!</p>
+                <button id="start-btn" class="btn start-game-btn">게임 시작하기</button>
+            </div>
+        </div>
+
+        <!-- 퀴즈 화면 -->
+        <div id="quiz-screen" class="screen hidden">
+            <div class="timer">
+                <div class="timer-bar">
+                    <div class="timer-progress"></div>
+                </div>
+                <div class="timer-text">30초</div>
+            </div>
+
+            <div class="movie-info">
+                <img id="movie-poster" class="movie-poster" src="" alt="영화 포스터">
+                <h2 id="movie-title" class="movie-title"></h2>
+
+                <div class="reviews">
+                    <h3>리뷰</h3>
+                    <div id="reviews-container" class="reviews-container">
+                        <!-- 리뷰들이 여기에 동적으로 추가됨 -->
+                    </div>
+                </div>
+
+                <div class="rating-input">
+                    <h3>이 영화의 평점은?</h3>
+                    <div class="rating-container">
+                        <input type="number" id="rating-input" class="rating-input-field"
+                               min="0" max="5" step="0.1" placeholder="0.0">
+                        <span class="rating-unit">/ 5.0</span>
+                    </div>
+                    <button id="submit-rating" class="btn">평점 제출</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- 결과 화면 -->
+        <div id="result-screen" class="screen hidden">
+            <div class="result-content">
+                <h2 id="result-title"></h2>
+                <p id="result-message"></p>
+                <div class="score">
+                    <p>현재 점수: <span id="current-score">0</span>점</p>
+                    <p>누적 오차: <span id="mse">0</span></p>
+                </div>
+                <div class="result-actions">
+                    <button id="next-btn" class="btn">다음 문제</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- 최종 결과 화면 -->
+        <div id="final-result-screen" class="screen hidden">
+            <div class="result-content">
+                <h2 id="final-result-title"></h2>
+                <p id="final-result-message"></p>
+                <div class="score">
+                    <p>최종 점수: <span id="final-current-score">0</span>점</p>
+                    <p>총 누적 오차: <span id="final-mse">0</span></p>
+                </div>
+                <div class="result-actions">
+                    <button id="final-save-result-btn" class="btn save-btn">결과 저장</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script-deploy.js"></script>
+</body>
+</html>

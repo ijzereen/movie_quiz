@@ -1,0 +1,156 @@
+{
+  "movies": [
+    {
+      "title": "기생충",
+      "poster": "https://img.cgv.co.kr/Movie/Thumbnail/Poster/000082/82680/82680_320.jpg",
+      "rating": 4.5,
+      "reviews": [
+        {
+          "author": "영화평론가 김철수",
+          "text": "올해 최고의 영화! 사회적 메시지가 강렬하다."
+        },
+        {
+          "author": "관객 박영희",
+          "text": "처음부터 끝까지 몰입해서 봤다. 연출이 대단해요."
+        },
+        {
+          "author": "시네필 이진호",
+          "text": "칸 영화제에서 황금종려상을 받은 이유를 알겠네요."
+        }
+      ]
+    },
+    {
+      "title": "어벤져스: 엔드게임",
+      "poster": "https://img.cgv.co.kr/Movie/Thumbnail/Poster/000085/85579/85579_320.jpg",
+      "rating": 4.3,
+      "reviews": [
+        {
+          "author": "히어로 팬 장민수",
+          "text": "마블 시리즈의 완벽한 마무리! 눈물이 났다."
+        },
+        {
+          "author": "영화 마니아 최수진",
+          "text": "액션과 감동이 절묘하게 어우러진 작품."
+        },
+        {
+          "author": "평론가 윤석호",
+          "text": "10년간의 서사를 완벽하게 마무리했다."
+        }
+      ]
+    },
+    {
+      "title": "조커",
+      "poster": "https://img.cgv.co.kr/Movie/Thumbnail/Poster/000085/85786/85786_320.jpg",
+      "rating": 4.2,
+      "reviews": [
+        {
+          "author": "심리학도 김하늘",
+          "text": "호아킨 피닉스의 연기가 압도적이다."
+        },
+        {
+          "author": "영화팬 이준영",
+          "text": "어두운 주제지만 깊이 있는 작품."
+        },
+        {
+          "author": "비평가 박찬욱",
+          "text": "베니스 영화제에서 황금사자상을 받은 수작."
+        }
+      ]
+    },
+    {
+      "title": "타짜",
+      "poster": "https://img.cgv.co.kr/Movie/Thumbnail/Poster/000034/34640/34640_320.jpg",
+      "rating": 3.8,
+      "reviews": [
+        {
+          "author": "카지노 팬 정다은",
+          "text": "화투의 세계를 흥미롭게 그렸다."
+        },
+        {
+          "author": "영화 마니아 강승호",
+          "text": "조승우의 연기가 인상적이었어요."
+        },
+        {
+          "author": "관객 민지영",
+          "text": "재미있게 봤지만 약간 길게 느껴졌다."
+        }
+      ]
+    },
+    {
+      "title": "올드보이",
+      "poster": "https://img.cgv.co.kr/Movie/Thumbnail/Poster/000032/32773/32773_320.jpg",
+      "rating": 4.4,
+      "reviews": [
+        {
+          "author": "스릴러 팬 오나래",
+          "text": "최민식의 연기가 아직도 기억에 남는다."
+        },
+        {
+          "author": "영화광 박준석",
+          "text": "칸 영화제에서 심사위원 대상을 받은 이유가 있다."
+        },
+        {
+          "author": "비평가 이수현",
+          "text": "한국 영화의 역사를 바꾼 작품 중 하나."
+        }
+      ]
+    },
+    {
+      "title": "인터스텔라",
+      "poster": "https://img.cgv.co.kr/Movie/Thumbnail/Poster/000078/78405/78405_320.jpg",
+      "rating": 4.6,
+      "reviews": [
+        {
+          "author": "SF 팬 김도현",
+          "text": "시간과 공간을 다룬 철학적인 SF 영화의 걸작."
+        },
+        {
+          "author": "물리학도 이서연",
+          "text": "상대성이론을 영화로 풀어낸 놀라운 시도."
+        },
+        {
+          "author": "영화 마니아 정재훈",
+          "text": "크리스토퍼 놀란 감독의 대표작 중 하나."
+        }
+      ]
+    },
+    {
+      "title": "라라랜드",
+      "poster": "https://img.cgv.co.kr/Movie/Thumbnail/Poster/000079/79470/79470_320.jpg",
+      "rating": 4.0,
+      "reviews": [
+        {
+          "author": "뮤지컬 팬 박소라",
+          "text": "음악과 춤이 아름다운 로맨틱 뮤지컬."
+        },
+        {
+          "author": "관객 최준호",
+          "text": "OST가 너무 좋아서 몇 번이고 듣게 되네요."
+        },
+        {
+          "author": "비평가 장미경",
+          "text": "아카데미 6관왕 수상은 당연한 결과."
+        }
+      ]
+    },
+    {
+      "title": "범죄도시",
+      "poster": "https://img.cgv.co.kr/Movie/Thumbnail/Poster/000085/85540/85540_320.jpg",
+      "rating": 3.9,
+      "reviews": [
+        {
+          "author": "액션 팬 윤상현",
+          "text": "마동석의 카리스마가 돋보이는 한국형 액션."
+        },
+        {
+          "author": "영화팬 김나래",
+          "text": "유머와 액션이 잘 섞인 오락 영화."
+        },
+        {
+          "author": "관객 이정민",
+          "text": "속편도 기대되는 프랜차이즈의 시작."
+        }
+      ]
+    }
+  ]
+}
