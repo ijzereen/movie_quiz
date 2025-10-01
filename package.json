@@ -2,6 +2,7 @@
   "name": "movie-quiz-backend",
   "version": "1.0.0",
   "description": "Movie Quiz Backend Server with Leaderboard",
+  "main": "server-deploy.js",
   "scripts": {
     "start": "node server-deploy.js",
     "dev": "node server-deploy.js"
