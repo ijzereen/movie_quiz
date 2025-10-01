@@ -39,7 +39,11 @@
                     <li>총 누적 오차가 적을수록 좋은 성적입니다</li>
                 </ul>
                 <p class="quiz-description">영화 포스터와 리뷰를 보고 평점을 맞춰보세요!</p>
-                <button id="start-btn" class="btn start-game-btn">게임 시작하기</button>
+
+                <div class="start-actions">
+                    <button id="start-btn" class="btn start-game-btn">게임 시작하기</button>
+                    <button id="leaderboard-btn" class="btn secondary">🏆 리더보드</button>
+                </div>
             </div>
         </div>
 
@@ -101,6 +105,33 @@
                 </div>
                 <div class="result-actions">
                     <button id="final-save-result-btn" class="btn save-btn">결과 저장</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- 리더보드 화면 -->
+        <div id="leaderboard-screen" class="screen hidden">
+            <div class="leaderboard-content">
+                <h2>🏆 리더보드</h2>
+                <p class="leaderboard-subtitle">상위 플레이어들의 성적을 확인해보세요!</p>
+
+                <div class="leaderboard-controls">
+                    <button id="refresh-leaderboard-btn" class="btn secondary">🔄 새로고침</button>
+                    <button id="back-to-start-btn" class="btn">← 메인으로</button>
+                </div>
+
+                <div id="leaderboard-container" class="leaderboard-container">
+                    <div class="loading" id="leaderboard-loading">
+                        <p>리더보드를 불러오는 중...</p>
+                    </div>
+                    <div class="no-data hidden" id="leaderboard-no-data">
+                        <p>아직 등록된 결과가 없습니다.</p>
+                        <p>퀴즈를 플레이하고 첫 번째 기록을 남겨보세요!</p>
+                    </div>
+                </div>
+
+                <div class="leaderboard-info">
+                    <p class="info-text">💡 최소 5문제 이상 플레이한 사용자만 리더보드에 표시됩니다.</p>
                 </div>
             </div>
         </div>

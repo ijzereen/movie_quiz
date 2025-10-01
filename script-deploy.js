@@ -1,8 +1,13 @@
 // 배포 환경 설정
 const isProduction = window.location.hostname !== 'localhost' && window.location.hostname !== '127.0.0.1';
 const API_BASE_URL = isProduction
-  ? 'https://your-render-backend-app.onrender.com'  // Render 앱 URL로 변경해야 함
+  ? 'https://your-render-backend-app.onrender.com'  // 배포 시 실제 Render 앱 URL로 변경해야 함
   : 'http://localhost:3001';
+
+// 로컬 개발 환경 체크 (파일 프로토콜에서는 localhost 사용)
+if (window.location.protocol === 'file:') {
+  console.log('📁 파일 프로토콜 감지 - localhost:3001 사용');
+}
 
 // 게임 상태 변수들
 let movies = [];
@@ -21,11 +26,15 @@ const startScreen = document.getElementById('start-screen');
 const quizScreen = document.getElementById('quiz-screen');
 const resultScreen = document.getElementById('result-screen');
 const finalResultScreen = document.getElementById('final-result-screen');
+const leaderboardScreen = document.getElementById('leaderboard-screen');
 const startBtn = document.getElementById('start-btn');
 const userInfoStartBtn = document.getElementById('user-info-start-btn');
 const submitRatingBtn = document.getElementById('submit-rating');
 const nextBtn = document.getElementById('next-btn');
 const finalSaveResultBtn = document.getElementById('final-save-result-btn');
+const leaderboardBtn = document.getElementById('leaderboard-btn');
+const refreshLeaderboardBtn = document.getElementById('refresh-leaderboard-btn');
+const backToStartBtn = document.getElementById('back-to-start-btn');
 
 const ratingInput = document.getElementById('rating-input');
 const userNameInput = document.getElementById('user-name');
@@ -385,11 +394,161 @@ userDormInput.addEventListener('keypress', function(e) {
   }
 });
 
+// 리더보드 화면 표시 함수
+function showLeaderboard() {
+  console.log('🏆 리더보드 화면 표시');
+
+  // 현재 화면 숨기기
+  startScreen.classList.add('hidden');
+
+  // 리더보드 화면 표시
+  leaderboardScreen.classList.remove('hidden');
+
+  // 리더보드 데이터 로드
+  loadLeaderboard();
+}
+
+// 리더보드 데이터 로드 함수
+async function loadLeaderboard() {
+  const container = document.getElementById('leaderboard-container');
+  const loadingEl = document.getElementById('leaderboard-loading');
+  const noDataEl = document.getElementById('leaderboard-no-data');
+
+  try {
+    console.log('📊 리더보드 데이터 로드 시작...');
+    console.log(`📡 요청 URL: ${API_BASE_URL}/api/leaderboard`);
+
+    // 로딩 상태 표시
+    loadingEl.classList.remove('hidden');
+    noDataEl.classList.add('hidden');
+
+    const response = await fetch(`${API_BASE_URL}/api/leaderboard`);
+
+    if (!response.ok) {
+      throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+    }
+
+    const data = await response.json();
+
+    if (data.success && data.leaderboard && data.leaderboard.length > 0) {
+      console.log(`✅ 리더보드 ${data.leaderboard.length}개 결과 로드 완료`);
+      displayLeaderboard(data.leaderboard);
+    } else {
+      console.log('📭 리더보드 데이터 없음');
+      showNoData();
+    }
+
+  } catch (error) {
+    console.error('❌ 리더보드 로드 실패:', error);
+
+    let errorMessage = '리더보드를 불러올 수 없습니다.\n\n';
+
+    if (isProduction) {
+      errorMessage += '백엔드 서버가 실행 중인지 확인해주세요.';
+    } else {
+      errorMessage += '로컬 서버가 실행 중인지 확인해주세요.';
+    }
+
+    alert(errorMessage);
+    showNoData();
+  } finally {
+    loadingEl.classList.add('hidden');
+  }
+}
+
+// 리더보드 표시 함수
+function displayLeaderboard(leaderboardData) {
+  const container = document.getElementById('leaderboard-container');
+  const loadingEl = document.getElementById('leaderboard-loading');
+  const noDataEl = document.getElementById('leaderboard-no-data');
+
+  // 기존 리더보드 제거
+  const existingList = container.querySelector('.leaderboard-list');
+  if (existingList) {
+    existingList.remove();
+  }
+
+  noDataEl.classList.add('hidden');
+
+  // 새 리더보드 생성
+  const leaderboardList = document.createElement('div');
+  leaderboardList.className = 'leaderboard-list';
+
+  leaderboardData.forEach((entry, index) => {
+    const item = document.createElement('div');
+    item.className = 'leaderboard-item';
+
+    // 순위에 따른 특별 스타일 적용
+    if (entry.rank <= 3) {
+      item.classList.add(`rank-${entry.rank}`);
+    }
+
+    item.innerHTML = `
+      <div class="leaderboard-rank">${entry.rank}</div>
+      <div class="leaderboard-user">
+        <div class="leaderboard-name">${entry.userName}</div>
+        <div class="leaderboard-dorm">${entry.userDorm}</div>
+      </div>
+      <div class="leaderboard-stats">
+        <div class="leaderboard-stat">
+          <div class="leaderboard-stat-value">${entry.score}/${entry.totalQuestions}</div>
+          <div class="leaderboard-stat-label">정확도</div>
+        </div>
+        <div class="leaderboard-stat">
+          <div class="leaderboard-stat-value">${entry.accuracy}%</div>
+          <div class="leaderboard-stat-label">정확률</div>
+        </div>
+        <div class="leaderboard-stat">
+          <div class="leaderboard-stat-value">${entry.totalError}</div>
+          <div class="leaderboard-stat-label">오차</div>
+        </div>
+      </div>
+    `;
+
+    leaderboardList.appendChild(item);
+  });
+
+  container.appendChild(leaderboardList);
+}
+
+// 데이터 없음 표시 함수
+function showNoData() {
+  const container = document.getElementById('leaderboard-container');
+  const noDataEl = document.getElementById('leaderboard-no-data');
+
+  // 기존 리더보드 제거
+  const existingList = container.querySelector('.leaderboard-list');
+  if (existingList) {
+    existingList.remove();
+  }
+
+  noDataEl.classList.remove('hidden');
+}
+
+// 메인 화면으로 돌아가기 함수
+function goToMain() {
+  console.log('🏠 메인 화면으로 돌아가기');
+
+  // 모든 화면 숨기기
+  leaderboardScreen.classList.add('hidden');
+  finalResultScreen.classList.add('hidden');
+  resultScreen.classList.add('hidden');
+  quizScreen.classList.add('hidden');
+
+  // 시작 화면 표시
+  startScreen.classList.remove('hidden');
+}
+
 // 이벤트 리스너들
 startBtn.addEventListener('click', handleStartButton);
 userInfoStartBtn.addEventListener('click', handleStartButton);
 submitRatingBtn.addEventListener('click', submitRating);
 nextBtn.addEventListener('click', nextQuestion);
 finalSaveResultBtn.addEventListener('click', saveQuizResult);
+
+// 리더보드 관련 이벤트 리스너들
+leaderboardBtn.addEventListener('click', showLeaderboard);
+refreshLeaderboardBtn.addEventListener('click', loadLeaderboard);
+backToStartBtn.addEventListener('click', goToMain);
 
 console.log('🎯 영화 평점 퀴즈 게임 로드 완료!');
