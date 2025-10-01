@@ -1,22 +1,20 @@
 {
   "name": "movie-quiz-backend",
   "version": "1.0.0",
-  "description": "Backend server for movie quiz application",
-  "main": "server.js",
+  "description": "Movie Quiz Backend Server with Leaderboard",
   "scripts": {
-    "start": "node server.js",
-    "dev": "nodemon server.js"
+    "start": "node server-deploy.js",
+    "dev": "node server-deploy.js"
   },
   "dependencies": {
-    "express": "^4.18.2",
+    "express": "^4.18.0",
     "cors": "^2.8.5",
-    "body-parser": "^1.20.2",
-    "sqlite3": "^5.1.6"
+    "@supabase/supabase-js": "^2.39.0"
   },
-  "devDependencies": {
-    "nodemon": "^3.0.1"
+  "engines": {
+    "node": ">=16.0.0"
   },
-  "keywords": ["movie", "quiz", "express", "sqlite"],
-  "author": "Movie Quiz App",
+  "keywords": ["movie", "quiz", "express", "supabase", "leaderboard"],
+  "author": "Your Name",
   "license": "MIT"
 }
