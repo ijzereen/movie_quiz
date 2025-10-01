@@ -1,7 +1,7 @@
 // 배포 환경 설정
 const isProduction = window.location.hostname !== 'localhost' && window.location.hostname !== '127.0.0.1';
 const API_BASE_URL = isProduction
-  ? 'https://movie-quiz-vcgm.onrender.com/'  // 배포 시 실제 Render 앱 URL로 변경해야 함
+  ? 'https://movie-quiz-vcgm.onrender.com'  // 배포 시 실제 Render 앱 URL로 변경해야 함
   : 'http://localhost:3001';
 
 // 로컬 개발 환경 체크 (파일 프로토콜에서는 localhost 사용)
