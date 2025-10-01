@@ -12,7 +12,7 @@ app.use(cors({
         'https://your-vercel-app.vercel.app',
         'https://your-custom-domain.com'
       ]
-    : ['http://localhost:3000', 'http://127.0.0.1:3000'],
+    : true, // 개발 환경에서는 모든 origin 허용
   credentials: true
 }));
 app.use(express.json());
