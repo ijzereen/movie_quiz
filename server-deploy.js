@@ -7,8 +7,12 @@ const app = express();
 // 미들웨어 설정
 app.use(cors({
   origin: process.env.NODE_ENV === 'production'
-    ? ['https://your-vercel-app.vercel.app', 'https://your-custom-domain.com']
-    : ['http://localhost:3000'],
+    ? [
+        'https://movie-quiz-vcgm.vercel.app',  // 실제 Vercel 앱 URL
+        'https://your-vercel-app.vercel.app',
+        'https://your-custom-domain.com'
+      ]
+    : ['http://localhost:3000', 'http://127.0.0.1:3000'],
   credentials: true
 }));
 app.use(express.json());
