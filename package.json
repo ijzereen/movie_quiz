@@ -2,10 +2,8 @@
   "name": "movie-quiz-backend",
   "version": "1.0.0",
   "description": "Movie Quiz Backend Server with Leaderboard",
-  "main": "server-deploy.js",
   "scripts": {
-    "start": "node server-deploy.js",
-    "dev": "node server-deploy.js"
+    "start": "node server-deploy.js"
   },
   "dependencies": {
     "express": "^4.18.0",
@@ -14,8 +12,5 @@
   },
   "engines": {
     "node": ">=16.0.0"
-  },
-  "keywords": ["movie", "quiz", "express", "supabase", "leaderboard"],
-  "author": "Your Name",
-  "license": "MIT"
+  }
 }
